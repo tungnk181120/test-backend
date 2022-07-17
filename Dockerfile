@@ -2,8 +2,8 @@
 FROM bitnami/node 
 WORKDIR /app
 COPY package*.json ./
-COPY yarn.lock /app
-COPY .env.example /app/.env
+COPY yarn.lock ./
+COPY .env.example ./.env
 RUN yarn
 COPY . .
 
