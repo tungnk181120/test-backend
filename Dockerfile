@@ -1,5 +1,5 @@
 # build stage
-FROM bitnami/node as build-stage
+FROM bitnami/node 
 WORKDIR /app
 COPY package*.json ./
 COPY yarn.lock ./
@@ -10,8 +10,8 @@ COPY . .
 # RUN yarn start:dev 
 
 # production stage
-FROM public.ecr.aws/nginx/nginx as production-stage
-COPY --from=build-stage /app /usr/share/nginx/html
+# FROM public.ecr.aws/nginx/nginx as production-stage
+# COPY --from=build-stage /app /usr/share/nginx/html
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
-#CMD ["yarn", "start:dev"]
+# CMD ["nginx", "-g", "daemon off;"]
+CMD ["yarn", "start:dev"]
